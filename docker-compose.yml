@@ -1,0 +1,66 @@
+services:
+    app:
+        build: .
+        image: ptbernas
+        container_name: ptbernas
+        restart: unless-stopped
+        tty: true
+        environment:
+            SERVICE_NAME: app
+            working_dir: /var/www/ptbernas
+        volumes:
+            - .:/var/www/ptbernas
+            - ./storage/php.ini:/usr/local/etc/php/conf.d/local.ini
+        networks:
+            - ptbernas
+
+    webserver:
+        image: nginx:alpine
+        container_name: nginxptbernas
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "2022:80"
+        volumes:
+            - .:/var/www/ptbernas
+            - ./storage/:/etc/nginx/conf.d/
+        networks:
+            - ptbernas
+
+    db:
+        image: mysql:5.7
+        container_name: dbptbernas
+        restart: always
+        tty: true
+        ports:
+            - "20222:3306"
+        volumes:
+            - lbdata:/var/lib/mysql
+        environment:
+            MYSQL_PASSWORD: ptbernas
+            MYSQL_ROOT_PASSWORD: ptbernas
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        networks:
+            - ptbernas
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: pmaptbernas
+        links:
+            - db
+        restart: always
+        ports:
+            - "7000:80"
+        networks:
+            - ptbernas
+
+#NETWORKS
+networks:
+    ptbernas:
+        driver: bridge
+
+#VOLUMES
+volumes:
+    lbdata:
+        driver: local

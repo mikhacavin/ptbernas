@@ -1,0 +1,150 @@
+<?php
+
+namespace App\Http\Controllers\Client;
+
+use App\Http\Controllers\Controller;
+use App\Models\Client\Certification;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
+
+class CertificationController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'image_url' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $certification = new Certification();
+        $certification->title = $request->title;
+
+        if ($request->hasFile('image_url')) {
+            $image = $request->file('image_url');
+            $imageName = Str::random(10) . '-' . $image->getClientOriginalName();
+            $imageUrl = $image->storeAs('images/certification', $imageName, 'public');
+            $certification->image_url = $imageUrl;
+        }
+
+        if ($certification->save()) {
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false, 'errors' => $certification->errors()]);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $certification = Certification::findOrFail($id);
+
+        if (request()->ajax()) {
+            return response()->json(['success' => true, 'data' => $certification]);
+        } else {
+            // return view('client.certifications.show', compact('certification'));
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        $certification = Certification::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $certification->title = $request->title;
+
+        if ($request->hasFile('image_url')) {
+            if ($certification->image_url) {
+                $imagePath = public_path('storage/' . $certification->image_url);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+
+            $image = $request->file('image_url');
+            $imageName = Str::random(10) . '-' . $image->getClientOriginalName();
+            $imageUrl = $image->storeAs('images/certification', $imageName, 'public');
+            $certification->image_url = $imageUrl;
+        }
+
+        if ($certification->save()) {
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false, 'errors' => $certification->errors()]);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        $certification = Certification::findOrFail($id);
+
+        if ($certification->image_url) {
+            $imagePath = public_path('storage/' . $certification->image_url);
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+
+        if ($certification->delete()) {
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false, 'errors' => $certification->errors()]);
+        }
+    }
+
+
+    public function queryDatatables(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Certification::orderBy('created_at', 'desc')->select('*');
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $btn = '<a href="javascript:void(0)" class="edit-certification btn btn-primary btn-sm" data-certification-id="' . $row->id . '">Edit</a>';
+                    $btn .= ' <a href="javascript:void(0)" class="delete-certification btn btn-danger btn-sm" data-certification-id="' . $row->id . '">Delete</a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+    }
+}
