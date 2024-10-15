@@ -1,4 +1,4 @@
-@extends('Layout.client')
+@extends('layout.client')
 @section('content')
     @component('components.header', ['image_url' => $serviceItems->image_url, 'title' => $serviceItems->name])
     @endcomponent

@@ -1,4 +1,4 @@
-@extends('Layout.client')
+@extends('layout.client')
 @section('content')
     @component('components.header', [
         'image_url' => $portfolioClientsPage->image_url,
@@ -168,7 +168,7 @@
     @endpush
     @component('components.contact', ['contacts' => $contacts, 'contactdetail' => $contactdetail])
     @endcomponent
-    @component('Components.modal-detail-portfolio')
+    @component('components.modal-detail-portfolio')
     @endcomponent
 @endsection
 

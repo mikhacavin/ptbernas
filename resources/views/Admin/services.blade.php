@@ -1,4 +1,4 @@
-@extends('Layout.admin')
+@extends('layout.admin')
 @section('title', 'Services')
 
 @section('content')
@@ -77,6 +77,6 @@
     @endcomponent
     @component('admin.components.form-modal-services')
     @endcomponent
-    @component('Admin.Components.slug', ['db' => 'serviceItems'])
+    @component('admin.components.slug', ['db' => 'serviceItems'])
     @endcomponent
 @endSection

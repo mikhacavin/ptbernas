@@ -1,4 +1,4 @@
-@extends('Layout.client')
+@extends('layout.client')
 @section('content')
     @component('components.header', [
         'image_url' => $blogPage->image_url,
@@ -16,7 +16,7 @@
                     <div class="content py-2 pt-0">
                         <h1 class="title text-center">{{ $blogPage->title }}</h1>
                         <p class="m-0 text-center">
-                           {{ $blogPage->subtitle }}
+                            {{ $blogPage->subtitle }}
                         </p>
                     </div><!-- End post content -->
                     <div class="tags-widget widget-item d-flex justify-content-center mt-2">
@@ -67,7 +67,8 @@
                                 <div class="col-lg-3 rounded post-item">
                                     <a href="/blog/{{ $post->slug }}">
                                         <article class="rounded-custom">
-                                            <div class="post-img" style="border-radius: 0.5rem 0.5rem 0 0; overflow: hidden;">
+                                            <div class="post-img"
+                                                style="border-radius: 0.5rem 0.5rem 0 0; overflow: hidden;">
                                                 <img src="{{ asset('storage/' . $post->thumbnail) }}" class="img-fluid"
                                                     alt="" width="100%" style="height: 200px; object-fit: cover;">
 

@@ -1,4 +1,4 @@
-@extends('Layout.admin')
+@extends('layout.admin')
 @section('title', 'Contact')
 
 @section('content')
@@ -93,8 +93,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="d-flex justify-content-end mb-3">
-                            <button class="btn btn-warning" data-toggle="modal"
-                                data-target="#footer-modal">Add New
+                            <button class="btn btn-warning" data-toggle="modal" data-target="#footer-modal">Add New
                                 Link</button>
                         </div>
                         <table id="footer-items" class="table table-bordered table-striped">

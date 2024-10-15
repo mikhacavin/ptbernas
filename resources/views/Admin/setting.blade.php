@@ -1,4 +1,4 @@
-@extends('Layout.admin')
+@extends('layout.admin')
 @section('title', 'Contact')
 
 @section('content')
@@ -63,8 +63,8 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <div class="d-flex justify-content-end mb-3">
-                            <button class="btn btn-warning" id="add-new-cs" data-toggle="modal"
-                                data-target="#cs-modal">Add New
+                            <button class="btn btn-warning" id="add-new-cs" data-toggle="modal" data-target="#cs-modal">Add
+                                New
                                 Menu</button>
                         </div>
                         <table id="cs-items" class="table table-bordered table-striped">

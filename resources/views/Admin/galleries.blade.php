@@ -1,4 +1,4 @@
-@extends('Layout.admin')
+@extends('layout.admin')
 @section('title', 'Project Activity Gallery & Certification')
 
 @section('content')
@@ -91,8 +91,8 @@
                                     width="100">
                                 <label for="cert_image_url">Image Thumbnail</label>
                                 <div class="custom-file">
-                                    <input type="file" name="cert_image_url" id="cert_image_url" class="custom-file-input"
-                                        accept="image/png, image/jpg, image/jpeg">
+                                    <input type="file" name="cert_image_url" id="cert_image_url"
+                                        class="custom-file-input" accept="image/png, image/jpg, image/jpeg">
                                     <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                 </div>
                                 <span class="error-message text-danger">

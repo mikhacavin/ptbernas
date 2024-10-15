@@ -1,4 +1,4 @@
-@extends('Layout.admin')
+@extends('layout.admin')
 @section('title', 'Testimonials/Feedback')
 
 @section('content')
@@ -115,7 +115,6 @@
                     top: 36px;
                     position: relative
                 }
-
             </style>
         @endpush
     </section>
@@ -127,6 +126,6 @@
     @endcomponent
     @component('admin.components.form-modal-feedback')
     @endcomponent
-    @component('Admin.Components.slug', ['db' => 'clientFeedback'])
+    @component('admin.components.slug', ['db' => 'clientFeedback'])
     @endcomponent
 @endSection

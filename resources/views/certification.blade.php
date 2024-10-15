@@ -1,4 +1,4 @@
-@extends('Layout.client')
+@extends('layout.client')
 @section('content')
     @component('components.header', [
         'image_url' => $certificationPage->image_url,
@@ -52,8 +52,8 @@
                                         @foreach ($certification as $item)
                                             <div class="swiper-slide">
                                                 <div class="testimonial-item-custom p-0">
-                                                    <img src="{{ asset('storage/' . $item->image_url) }}"
-                                                        class="" alt="" />
+                                                    <img src="{{ asset('storage/' . $item->image_url) }}" class=""
+                                                        alt="" />
                                                     <h3>{{ $item->title }}</h3>
                                                 </div>
                                             </div>

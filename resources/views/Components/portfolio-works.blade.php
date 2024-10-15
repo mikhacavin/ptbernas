@@ -149,7 +149,7 @@
                });
            </script>
        @endpush
-       @component('Components.modal-detail-portfolio')
+       @component('components.modal-detail-portfolio')
        @endcomponent
    </section>
    <!-- /Alt Features Section -->

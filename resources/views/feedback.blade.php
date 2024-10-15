@@ -1,4 +1,4 @@
-@extends('Layout.client')
+@extends('layout.client')
 @section('content')
     @component('components.header', ['image_url' => 'images/contactpage/qhWCWrk6zy-contact.png', 'title' => 'title'])
     @endcomponent
@@ -32,7 +32,8 @@
                                                     <input type="radio" id="rating1" name="rating" value="1">
                                                     <label for="rating1">☆</label>
                                                 </div>
-                                                <span class="error-message text-danger">{{ $errors->first('rating') }}</span>
+                                                <span
+                                                    class="error-message text-danger">{{ $errors->first('rating') }}</span>
                                             </div>
                                             <div class="form-group mb-4">
                                                 <input type="text" class="form-control" id="name" name="name"
@@ -44,12 +45,14 @@
                                                 <input type="text" class="form-control" id="position" name="position"
                                                     placeholder="Jobs / Position" required style="border-color: #8c8c8c;"
                                                     value="{{ old('position') }}">
-                                                <span class="error-message text-danger">{{ $errors->first('position') }}</span>
+                                                <span
+                                                    class="error-message text-danger">{{ $errors->first('position') }}</span>
                                             </div>
                                             <div class="form-group mb-4">
                                                 <textarea class="form-control" id="message" name="message" placeholder="Leave your message.." required rows="5"
                                                     style="border-color: #8c8c8c;">{{ old('message') }}</textarea>
-                                                <span class="error-message text-danger">{{ $errors->first('message') }}</span>
+                                                <span
+                                                    class="error-message text-danger">{{ $errors->first('message') }}</span>
                                             </div>
                                             <div class="d-grid">
                                                 <button type="submit" class="btn btn-block btn-dark">Rate now</button>

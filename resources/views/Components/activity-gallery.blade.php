@@ -8,10 +8,11 @@
     <div class="container">
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
             <div class="row gy-5 isotope-container" data-aos="fade-up" data-aos-delay="200" id="parentku">
-                @include('Components.card-activities')
+                @include('components.card-activities')
             </div>
             <div id="loading" class="fs-5 fw-bold mt-2" style="display:none; text-align:center;">Loading ⏳...</div>
-            <div id="no-data" class="fs-5 fw-bold mt-5" style="display:none; text-align:center;">You've reach the end 🚩.
+            <div id="no-data" class="fs-5 fw-bold mt-5" style="display:none; text-align:center;">You've reach the end
+                🚩.
             </div>
 
         </div>

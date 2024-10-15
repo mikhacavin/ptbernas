@@ -1,4 +1,4 @@
-@extends('Layout.admin')
+@extends('layout.admin')
 @section('title', 'Blog / Articles')
 
 @section('content')
@@ -9,8 +9,7 @@
                     <div class="card-header">
                         <h5 class="text-center">Blog</h5>
                     </div>
-                    <form action="{{ route('blogpage.update', $blogPage->id) }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('blogpage.update', $blogPage->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="card-body">
@@ -34,8 +33,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <img src="{{ asset('storage/' . $blogPage->image_url) }}" alt="image"
-                                    width="100">
+                                <img src="{{ asset('storage/' . $blogPage->image_url) }}" alt="image" width="100">
                                 <label for="image_url">Image Thumbnail</label>
                                 <div class="custom-file">
                                     <input type="file" name="image_url" id="image_url" class="custom-file-input"
@@ -136,6 +134,6 @@
     @endcomponent
     @component('admin.components.form-modal-category')
     @endcomponent
-    @component('Admin.Components.slug', ['db' => 'blogPosts'])
+    @component('admin.components.slug', ['db' => 'blogPosts'])
     @endcomponent
 @endSection

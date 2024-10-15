@@ -13,7 +13,7 @@
     <div class="container">
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
             <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200" id="parentku">
-                @include('Components.card-activities')
+                @include('components.card-activities')
             </div>
         </div>
         <div class="d-flex justify-content-center text-center text-lg-start my-5">

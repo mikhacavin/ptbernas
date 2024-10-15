@@ -1,4 +1,4 @@
-@extends('Layout.client')
+@extends('layout.client')
 @section('content')
     @component('components.hero', ['hero' => $hero, 'servicesItems' => $servicesItems])
     @endcomponent
