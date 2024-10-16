@@ -62,7 +62,7 @@
 
     <!-- whatsapp floating -->
 
-    <div id="whatsapp-chat" class="hide whatsapp-widget" style="font-family: 'Lato', sans-serif">
+    <div id="whatsapp-chat" class="hide-chat whatsapp-widget" style="font-family: 'Lato', sans-serif">
         <div class="header-chat">
             <div class="head-home">
                 <h3 style="color: white">Hello!👋</h3>
@@ -73,7 +73,7 @@
                 </p>
                 <!-- Perbaikan penutupan tag <a> -->
             </div>
-            <div class="get-new hide">
+            <div class="get-new hide-chat">
                 <a class="back-chat" href="javascript:void(0)"
                     style="color: white; text-decoration: underline">&lt;Back</a>
                 <!-- Perbaikan href='javascript:void' menjadi href='javascript:void(0)' -->
@@ -101,7 +101,7 @@
                 We will respond immediately.
             </div>
         </div>
-        <div class="start-chat hide">
+        <div class="start-chat hide-chat">
             <div class="first-msg">
                 <span>Hello! we're happy to help you 🤗</span>
             </div>
@@ -148,8 +148,8 @@
             document.getElementById("get-number").innerHTML = $(this)
                 .children(".my-number")
                 .text();
-            $(".start-chat, .get-new").addClass("show").removeClass("hide");
-            $(".home-chat, .head-home").addClass("hide").removeClass("show");
+            $(".start-chat, .get-new").addClass("show-chat").removeClass("hide-chat");
+            $(".home-chat, .head-home").addClass("hide-chat").removeClass("show-chat");
             document.getElementById("get-nama").innerHTML = $(this)
                 .children(".info-chat")
                 .children(".chat-nama")
@@ -162,8 +162,8 @@
 
         // Back
         $(document).on("click", ".back-chat", function() {
-            $(".start-chat, .get-new").addClass("hide").removeClass("show");
-            $(".home-chat, .head-home").addClass("show").removeClass("hide");
+            $(".start-chat, .get-new").addClass("hide-chat").removeClass("show-chat");
+            $(".home-chat, .head-home").addClass("show-chat").removeClass("hide-chat");
             document.getElementById("get-nama").innerHTML = $(this)
                 .children(".info-chat")
                 .children(".chat-nama")
@@ -175,11 +175,11 @@
         });
 
         $(document).on("click", ".close-chat", function() {
-            $("#whatsapp-chat").addClass("hide").removeClass("show");
+            $("#whatsapp-chat").addClass("hide-chat").removeClass("show-chat");
         });
 
         $(document).on("click", ".blantershow-chat", function() {
-            $("#whatsapp-chat").addClass("show").removeClass("hide");
+            $("#whatsapp-chat").addClass("show-chat").removeClass("hide-chat");
         });
     </script>
 @endpush
@@ -227,7 +227,7 @@
             overflow: hidden;
             z-index: 99;
             animation-name: showchat;
-            animation-duration: 1s;
+            animation-duration: 0.6s;
             transform: scale(1);
         }
 
@@ -296,7 +296,7 @@
             display: block;
             overflow: hidden;
             animation-name: showhide;
-            animation-duration: 2.5s;
+            animation-duration: 0.7s;
         }
 
         a.informasi:hover {
@@ -391,7 +391,7 @@
 
         @keyframes showhide {
             from {
-                transform: scale(0.5);
+                transform: scale(0.3);
                 opacity: 0;
             }
         }
@@ -412,18 +412,18 @@
             }
         }
 
-        .hide {
+        .hide-chat {
             display: none;
             animation-name: showhide;
-            animation-duration: 1.5s;
+            animation-duration: 1s;
             transform: scale(1);
             opacity: 1;
         }
 
-        .show {
+        .show-chat {
             display: block;
             animation-name: showhide;
-            animation-duration: 1.5s;
+            animation-duration: 1s;
             transform: scale(1);
             opacity: 1;
         }

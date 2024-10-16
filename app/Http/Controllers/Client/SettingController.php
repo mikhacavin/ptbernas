@@ -59,7 +59,8 @@ class SettingController extends Controller
 
         $rules = [
             'site_name' => 'required|string|max:255',
-            'whatsapp' => 'required|string|max:255',
+            'whatsapp' => 'nullable|string|max:255',
+            'email' => 'required',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
 
@@ -78,7 +79,7 @@ class SettingController extends Controller
         }
 
         $setting->site_name = $request->site_name;
-        $setting->whatsapp = $request->whatsapp;
+        $setting->email = $request->email;
 
         if ($setting->save()) {
             return redirect()->route('dashboard.setting')->with('success', 'data updated successfully');

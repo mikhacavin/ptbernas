@@ -318,3 +318,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::post('/feedback', 'feedbackPost')->name('feedbackPost');
     Route::post('/feedback/{id}', 'feedbackSlugPost')->name('feedbackSlugPost');
 });
+
+Route::controller(ContactController::class)->group(function () {
+    Route::post('/submit-contact', 'submit')->name('contact.submit');
+});

@@ -100,9 +100,9 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Type</th>
                                     <th>Name</th>
                                     <th>Url</th>
+                                    <th>Type</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

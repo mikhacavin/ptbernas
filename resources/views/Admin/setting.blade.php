@@ -9,6 +9,7 @@
                     <div class="card-header">
                         <h5 class="text-center">Setting</h5>
                     </div>
+                    
                     <form action="{{ route('setting.update', $setting->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -23,15 +24,15 @@
                                     @enderror
                                 </span>
                             </div>
-                            {{-- <div class="form-group">
-                                <label for="whatsapp">Whatsapp</label>
-                                <textarea name="whatsapp" id="whatsapp" class="form-control" rows="5">{{ $setting->whatsapp }}</textarea>
+                            <div class="form-group">
+                                <label for="email">Email Form Forward</label>
+                                <input type="text" name="email" id="email" class="form-control" value="{{ $setting->email }}">
                                 <span class="error-message text-danger">
-                                    @error('whatsapp')
+                                    @error('email')
                                         {{ $message }}
                                     @enderror
                                 </span>
-                            </div> --}}
+                            </div>
                             <div class="form-group">
                                 <img src="{{ asset('storage/' . $setting->image_url) }}" alt="image" width="100">
                                 <label for="image_url">Logo</label>

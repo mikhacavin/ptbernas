@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ContactMail;
 use App\Models\Client\Contact;
+use App\Models\Client\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -81,5 +84,34 @@ class ContactController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function submit(Request $request)
+    {
+        // Validate the form input
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required'
+        ]);
+
+        try {
+            // Send the email
+            $adminEmail = Setting::where('id', 1)->value('email');
+            Mail::to($adminEmail)->send(new ContactMail((object)$validatedData));
+
+            // Return success response
+            return response()->json([
+                'success' => true,
+                'message' => 'Thank you for contacting us. We will get back to you shortly.'
+            ]);
+        } catch (\Exception $e) {
+            // Return error response
+            return response()->json([
+                'success' => false,
+                'message' => 'There was an error sending your message. Please try again later.'
+            ], 500);
+        }
     }
 }

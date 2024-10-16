@@ -1,7 +1,7 @@
       <!-- Contact Section -->
       <section id="contact" class="contact section"
           style="
-    background-image: url('assets/img/bg-contact.svg');
+    background-image: url('{{ asset('assets/img/bg-contact.svg') }}');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -56,7 +56,8 @@
                   </div>
 
                   <div class="col-lg-6">
-                      <form action="forms/contact.php" method="post" class="php-email-form">
+                      <form action="" method="post" class="php-email-form-edit" id="contact-form-submit-custom">
+                          @csrf
                           <div class="row gy-4">
                               <div class="col-md-6">
                                   <input type="text" name="name" class="form-control" placeholder="Your Name"
@@ -78,13 +79,7 @@
                               </div>
 
                               <div class="col-12 text-center">
-                                  <div class="loading">Loading</div>
-                                  <div class="error-message"></div>
-                                  <div class="sent-message">
-                                      Your message has been sent. Thank you!
-                                  </div>
-
-                                  <button type="submit">Send Message</button>
+                                  <button type="submit" id="contact-btn-submit">Send Message</button>
                               </div>
                           </div>
                       </form>
@@ -92,5 +87,46 @@
                   <!-- End Contact Form -->
               </div>
           </div>
+          @push('script')
+              <script>
+                  $(document).ready(function() {
+
+                      $.ajaxSetup({
+                          headers: {
+
+                              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                          }
+                      });
+
+                      $('#contact-form-submit-custom').submit(function(e) {
+                          e.preventDefault();
+                          var url = '{{ route('contact.submit') }}';
+                          var formData = new FormData(this);
+                          $('#contact-btn-submit').attr('disabled', true).text('Loading..');
+                          $.ajax({
+                              type: 'POST',
+                              url: url,
+                              data: formData,
+                              cache: false,
+                              contentType: false,
+                              processData: false,
+                              success: function(data) {
+                                  if (data.success) {
+                                      $('#contact-btn-submit').attr('disabled', false).text('Send Message');
+                                      $('#contact-form-submit-custom')[0].reset();
+                                      alert('Message sent successfully');
+                                  }
+                              },
+                              error: function(xhr, status, error) {
+                                  var errors = xhr.responseJSON.errors;
+                                  $('#contact-btn-submit').attr('disabled', false).text('Send Message');
+                                  alert('something went wrong!',errors);
+                              }
+                          });
+                      });
+
+                  });
+              </script>
+          @endpush
       </section>
       <!-- /Contact Section -->
