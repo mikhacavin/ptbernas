@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Client\SocialMedia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SocialMediaController extends Controller
 {
@@ -60,7 +61,22 @@ class SocialMediaController extends Controller
             'subtitle' => 'string',
             'title_projects' => 'string',
             'desc_projects' => 'string',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+        if ($request->hasFile('image_url')) {
+            if (SocialMedia::findOrFail($id)->image_url) {
+                $imagePath = public_path('storage/' . SocialMedia::findOrFail($id)->image_url);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+
+            $originalName = $request->file('image_url')->getClientOriginalName();
+            $imageName = Str::random(10) . '-' . $originalName;
+            $image_url = $request->file('image_url')->storeAs('images/projectPage', $imageName, 'public');
+            $validatedData['image_url'] = $image_url;
+        }
 
         SocialMedia::where('id', $id)
             ->update($validatedData);

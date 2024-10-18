@@ -1,6 +1,6 @@
 @extends('layout.client')
 @section('content')
-    @component('components.header', ['image_url' => 'images/contactpage/qhWCWrk6zy-contact.png', 'title' => 'title'])
+    @component('components.header', ['image_url' => 'images/contactpage/qhWCWrk6zy-contact.png', 'title' => 'Feedback for'.' ' .$form->clients->name])
     @endcomponent
     <div class="container">
         <div class="row">
@@ -13,7 +13,7 @@
                                 <div class="col-lg-5 my-5">
                                     <div class="card border-none shadow" style="border-radius: 15px; overflow:hidden;">
                                         <div class="card-header bg-primary text-white text-center pt-3">
-                                            <h4 class="text-white">Hello {{ $form->clients->name }}👋</h4>
+                                            <h4 class="text-white">Hello team {{ $form->clients->name }}👋</h4>
                                             <p>Your opinion matters to us!</p>
                                         </div>
                                         <div class="card-body mb-3">

@@ -7,6 +7,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>@yield('title')</title>
 
+
+    <link href="{{ asset('assets/img/favicon.ico') }}" rel="icon" />
+    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon" />
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -46,9 +50,6 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="{{ asset('/admin/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-
-    <script src="https://cdn.tiny.cloud/1/flaslgydxvivestoido2p1wiug67ocqud6p6spipwz26b2yk/tinymce/7/tinymce.min.js"
-        referrerpolicy="origin"></script>
 
     <style>
         .select2-selection__rendered {
@@ -150,72 +151,14 @@
     </div>
     <!-- ./wrapper -->
 
-
-    <script>
-        $.widget.bridge('uibutton', $.ui.button);
-        $(document).ready(function() {
-            $('.custom-file-input').on('change', function() {
-                var fileName = $(this).val().split('\\').pop();
-                $(this).next('.custom-file-label').addClass("selected").html(fileName);
-            });
-            //Initialize Select2 Elements
-            $('.select2').select2()
-
-        });
-
-        tinymce.init({
-            selector: '.mcetextarea',
-            images_upload_url: '{{ route('dashboard.tinymce') }}',
-            // height: 100,
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            // relative_urls: false,
-            // image_title: true,
-            // automatic_uploads: true,
-            // images_upload_url: '/dashboard/upload-image-tinymce',
-            // file_picker_types: 'image',
-            // file_picker_callback: function(cb, value, meta) {
-            //     var input = document.createElement('input');
-            //     input.setAttribute('type', 'file');
-            //     input.setAttribute('accept', 'image/*');
-            //     input.onchange = function() {
-            //         var file = this.files[0];
-
-            //         var reader = new FileReader();
-            //         reader.readAsDataURL(file);
-            //         reader.onload = function() {
-            //             var id = 'blobid' + (new Date()).getTime();
-            //             var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-            //             var base64 = reader.result.split(',')[1];
-            //             var blobInfo = blobCache.create(id, file, base64);
-            //             blobCache.add(blobInfo);
-            //             cb(blobInfo.blobUri(), {
-            //                 title: file.name
-            //             });
-            //         };
-            //     };
-            //     input.click();
-            // }
-        });
-    </script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('/admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- ChartJS -->
-    <script src="{{ asset('/admin/plugins/chart.js/Chart.min.js') }}"></script>
-    <!-- Sparkline -->
-    {{-- <script src="{{ asset('/admin/plugins/sparklines/sparkline.js') }}"></script> --}}
-    <!-- JQVMap -->
-    {{-- <script src="{{ asset('/admin/plugins/jqvmap/jquery.vmap.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('/admin/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script> --}}
-    <!-- jQuery Knob Chart -->
-    {{-- <script src="{{ asset('/admin/plugins/jquery-knob/jquery.knob.min.js') }}"></script> --}}
-    <!-- daterangepicker -->
+
     <script src="{{ asset('/admin/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ asset('/admin/plugins/daterangepicker/daterangepicker.js') }}"></script>
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-    <!-- Summernote -->
-    <script src="{{ asset('/admin/plugins/summernote/summernote-bs4.min.js') }}"></script>
+
     <!-- overlayScrollbars -->
     <script src="{{ asset('/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
@@ -229,12 +172,6 @@
     <script src="{{ asset('/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('/admin/plugins/jszip/jszip.min.js') }}"></script>
-    <script src="{{ asset('/admin/plugins/pdfmake/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('/admin/plugins/pdfmake/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('/admin/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-    <script src="{{ asset('/admin/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-    <script src="{{ asset('/admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- BS-Stepper -->
     <script src="{{ asset('/admin/plugins/bs-stepper/js/bs-stepper.min.js') }}"></script>
     <!-- Select2 -->

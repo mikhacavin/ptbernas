@@ -32,7 +32,7 @@
                     <a href="/dashboard/about" class="nav-link {{ request()->is('dashboard/about') ? 'active' : '' }}">
                         <i class="bi bi-info-circle"></i>
                         <p>
-                            About Us
+                            About Us & Team
                         </p>
                     </a>
                 </li>

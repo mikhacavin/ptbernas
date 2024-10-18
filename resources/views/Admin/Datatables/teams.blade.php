@@ -106,6 +106,10 @@
                     $('#team-modal #name').val(data.data.name);
                     $('#team-modal #title').val(data.data.title);
                     $('#team-modal #index').val(data.data.index);
+                    $('#team-modal #twitter_link').val(data.data.twitter);
+                    $('#team-modal #ig_link').val(data.data.ig);
+                    $('#team-modal #fb_link').val(data.data.fb);
+                    $('#team-modal #linkedin_link').val(data.data.linkedin);
                     $('#team-modal #team_id').val(data.data.id);
                     $('#team-modal #image_url').removeAttr('required');
                     var domain = window.location.hostname;
@@ -127,7 +131,7 @@
 
         // When the modal is closed
         $('#team-modal').on('hidden.bs.modal', function() {
-            $(this).find('#name, #title, #index, #image_url, #team_id').val('');
+            $(this).find('#name, #title, #index, #image_url, #team_id, #ig_link, #fb_link, #twitter_link, #linkedin_link').val('');
             $(this).find('img').attr('src', '').css('display', 'none');
             $(this).find('.custom-file-label').text('Choose file');
             $(this).find('.error-message').text('');
@@ -149,7 +153,7 @@
         });
 
         $(document).on('click', '.delete', function() {
-            var serviceId = $(this).data('service-id');
+            var serviceId = $(this).data('team-id');
             if (confirm('Are you sure?')) {
                 $.ajax({
                     type: 'DELETE',

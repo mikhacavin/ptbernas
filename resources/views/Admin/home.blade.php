@@ -5,7 +5,7 @@
     <section>
         <div class="row">
             <div class="col-lg-6">
-                <div class="card card-primary">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Hero</h3>
                     </div>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="card card-primary">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Projects</h3>
                     </div>
@@ -55,6 +55,22 @@
                                 <input type="text" class="form-control" id="desc_project" placeholder="Enter Sub Title"
                                     name="desc_projects" value="{{ $social_media->desc_projects }}" required>
                             </div>
+                            <img src="{{ asset('storage/' . $social_media->image_url) }}" width="100" alt="Image">
+                            <div class="form-group">
+                                <label for="exampleInputFile">Change Projects Background?</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file"
+                                            class="custom-file-input @error('image_url') is-invalid @enderror"
+                                            id="exampleInputFile" name="image_url"
+                                            accept="image/png, image/jpg, image/jpeg">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                    </div>
+                                </div>
+                                @error('image_url')
+                                    <span class="error-message text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary btn-block">Update</button>
@@ -63,7 +79,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="card card-primary">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Social Media</h3>
                     </div>
@@ -90,7 +106,7 @@
                 </div>
             </div>
             <div class="col-lg-6">
-                <div class="card card-primary">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">Testimonial</h3>
                     </div>
@@ -169,7 +185,7 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <div class="card card-primary">
+                <div class="card card-success">
                     <div class="card-header">
                         <h3 class="card-title">USP</h3>
                     </div>
@@ -206,3 +222,27 @@
         @endcomponent
     </section>
 @endSection
+@push('script')
+    <script src="https://cdn.tiny.cloud/1/flaslgydxvivestoido2p1wiug67ocqud6p6spipwz26b2yk/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+        $(document).ready(function() {
+            $('.custom-file-input').on('change', function() {
+                var fileName = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').addClass("selected").html(fileName);
+            });
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+        });
+
+        tinymce.init({
+            selector: '.mcetextarea',
+            images_upload_url: '{{ route('dashboard.tinymce') }}',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    </script>
+@endpush

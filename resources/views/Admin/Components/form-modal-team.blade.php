@@ -29,11 +29,50 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="index">Index</label>
-                                <input type="number" class="form-control" id="index" name="index" required>
-                                <span class="error-message text-danger"></span>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="index">Index</label>
+                                        <input type="number" class="form-control" id="index" name="index"
+                                            required>
+                                        <span class="error-message text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <label for="">Social Media Information</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-twitter-x"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Twitter Link" id="twitter_link" name="twitter_link">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-facebook"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Facebook Link" id="fb_link" name="fb_link">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-instagram"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Instagram Link" id="ig_link" name="ig_link">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="bi bi-linkedin"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="LinkedIn Link" id="linkedin_link" name="linkedin_link">
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                         <div class="col-lg-6">
                             <img id="image-thumbnail" src="" alt="Image Thumbnail" width="30%"

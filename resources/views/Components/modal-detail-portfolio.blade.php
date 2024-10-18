@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <div class="row align-items-center py-2">
                     <div class="col-auto">
-                        <div class="rounded-circle border d-flex align-items-center justify-content-center border-black"
+                        <div class="rounded-circle border d-flex align-items-center justify-content-center border-gray"
                             style="width: 100px; height: 100px; overflow: hidden;">
                             <img src="/storage/images/clients/7xQBUzaoPc-image 9.png" alt=""
                                 style="max-width: 100%; max-height: 100%; object-fit: contain;">

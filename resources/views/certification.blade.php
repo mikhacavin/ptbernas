@@ -54,7 +54,7 @@
                                                 <div class="testimonial-item-custom p-0">
                                                     <img src="{{ asset('storage/' . $item->image_url) }}" class=""
                                                         alt="" />
-                                                    <h3>{{ $item->title }}</h3>
+                                                    <small>{{ $item->title }}</small>
                                                 </div>
                                             </div>
                                         @endforeach

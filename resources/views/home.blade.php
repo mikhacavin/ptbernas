@@ -20,6 +20,7 @@
         'projects' => $projects,
         'title' => $social_media->title_projects,
         'subtitle' => $social_media->desc_projects,
+        'image_url' => $social_media->image_url
     ])
     @endcomponent
     @component('components.portfolio-works', ['works' => $works, 'worksPage' => $worksPage])

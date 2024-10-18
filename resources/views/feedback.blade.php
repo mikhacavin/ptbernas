@@ -1,6 +1,6 @@
 @extends('layout.client')
 @section('content')
-    @component('components.header', ['image_url' => 'images/contactpage/qhWCWrk6zy-contact.png', 'title' => 'title'])
+    @component('components.header', ['image_url' => 'images//photo-90.jpg', 'title' => 'Feedback'])
     @endcomponent
     <div class="container">
         <div class="row">

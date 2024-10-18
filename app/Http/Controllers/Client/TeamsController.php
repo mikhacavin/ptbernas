@@ -36,6 +36,10 @@ class TeamsController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'title' => 'required|string|max:255',
+            'fb_link' => 'nullable|string|max:255',
+            'ig_link' => 'nullable|string|max:255',
+            'twitter_link' => 'nullable|string|max:255',
+            'linkedin_link' => 'nullable|string|max:255',
             'index' => 'nullable|integer|between:0,999',
             'image_url' => 'required|image|mimes:jpeg,png,jpg|max:2048',
         ]);
@@ -47,6 +51,11 @@ class TeamsController extends Controller
         $team = new Teams();
         $team->name = $request->name;
         $team->title = $request->title;
+        $team->index = $request->index;
+        $team->ig = $request->ig_link;
+        $team->fb = $request->fb_link;
+        $team->twitter = $request->twitter_link;
+        $team->linkedin = $request->linkedin_link;
         $team->index = $request->index;
         $team->image_url = $image_url;
         if ($team->save()) {
@@ -88,6 +97,10 @@ class TeamsController extends Controller
         $rules = [
             'name' => 'required|string|max:255',
             'title' => 'required|string|max:255',
+            'fb_link' => 'nullable|string|max:255',
+            'ig_link' => 'nullable|string|max:255',
+            'twitter_link' => 'nullable|string|max:255',
+            'linkedin_link' => 'nullable|string|max:255',
             'index' => 'nullable|integer|between:0,999',
             'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
@@ -108,6 +121,10 @@ class TeamsController extends Controller
 
         $team->name = $request->name;
         $team->title = $request->title;
+        $team->ig = $request->ig_link;
+        $team->fb = $request->fb_link;
+        $team->twitter = $request->twitter_link;
+        $team->linkedin = $request->linkedin_link;
         $team->index = $request->index;
         if ($team->save()) {
             return response()->json(['success' => true]);
@@ -140,7 +157,7 @@ class TeamsController extends Controller
     public function queryDatatables(Request $request)
     {
         if ($request->ajax()) {
-            $data = Teams::orderBy('created_at', 'desc')->select('*');
+            $data = Teams::orderBy('index', 'asc')->select('*');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {

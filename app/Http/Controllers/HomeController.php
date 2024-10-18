@@ -45,10 +45,10 @@ class HomeController extends GlobalSettingController
         $this->about = About::first();
         $this->usp = Usp::first();
         $this->clients = Clients::all();
-        $this->works = Portfolio::with('clients', 'service_items')->get();
+        $this->works = Portfolio::with('clients', 'service_items')->latest()->take(5)->get();
         $this->worksPage = PortfolioClients::first();
         $this->socials = SocialMediaList::all();
-        $this->testimonials = TestimonialList::with('clients')->get();
+        $this->testimonials = TestimonialList::where('show', 1)->with('clients')->get();
         $this->posts = BlogPosts::with('category', 'author')->latest()->take(4)->get();
         $this->postsPage = Blog::first();
         $this->activities = ActivitiesGallery::latest()->take(10)->get();

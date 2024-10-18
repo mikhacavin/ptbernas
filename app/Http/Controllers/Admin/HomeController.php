@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\GlobalSettingController;
 use App\Models\Client\About;
+use App\Models\Client\ActivitiesGallery;
 use App\Models\Client\Activity;
 use App\Models\Client\Blog;
 use App\Models\Client\BlogPosts;
@@ -16,6 +17,7 @@ use App\Models\Client\ContactDetails;
 use App\Models\Client\CustomerSupport;
 use App\Models\Client\Footer;
 use App\Models\Client\Hero;
+use App\Models\Client\Portfolio;
 use App\Models\Client\PortfolioClients;
 use App\Models\Client\Service;
 use App\Models\Client\ServiceItems;
@@ -31,7 +33,11 @@ class HomeController extends GlobalSettingController
 {
     function dashboard()
     {
-        return view('admin.dashboard');
+        $this->blogpost_count = BlogPosts::count();
+        $this->service_items_count = ServiceItems::count();
+        $this->portfolio_count = Portfolio::count();
+        $this->activities_gallery_count = ActivitiesGallery::count();
+        return view('admin.dashboard', $this->data);
     }
     function index()
     {

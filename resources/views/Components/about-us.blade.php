@@ -33,16 +33,15 @@
                               </div>
                               <p class="text-start">{!! nl2br($about->mission) !!}</p>
                           </div>
-
-                      </div>
-                      <div class="text-center text-lg-start">
-                          <a href="/about"
-                              class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                              <span>Read More</span>
-                              <i class="bi bi-arrow-up-right"></i>
-                          </a>
                       </div>
                   </div>
+              </div>
+              <div class="text-center">
+                  <a href="/about"
+                      class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                      <span>Read More</span>
+                      <i class="bi bi-arrow-up-right"></i>
+                  </a>
               </div>
           </div>
       </div>

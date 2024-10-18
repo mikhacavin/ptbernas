@@ -9,7 +9,7 @@
                     <div class="card-header">
                         <h5 class="text-center">Setting</h5>
                     </div>
-                    
+
                     <form action="{{ route('setting.update', $setting->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -66,7 +66,7 @@
                         <div class="d-flex justify-content-end mb-3">
                             <button class="btn btn-warning" id="add-new-cs" data-toggle="modal" data-target="#cs-modal">Add
                                 New
-                                Menu</button>
+                                CS</button>
                         </div>
                         <table id="cs-items" class="table table-bordered table-striped">
                             <thead>

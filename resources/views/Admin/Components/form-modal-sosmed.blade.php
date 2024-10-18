@@ -27,7 +27,7 @@
                         <span class="error-message text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="icon">Icon</label>
+                        <label for="icon">Icon <a href="https://icons.getbootstrap.com/" target="_blank">Check Icons</a></label>
                         <input type="text" class="form-control" id="icon" name="icon" required>
                         <span class="error-message text-danger"></span>
                     </div>

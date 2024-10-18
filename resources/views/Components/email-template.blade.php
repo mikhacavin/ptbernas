@@ -1,4 +1,4 @@
-<h2>Hey, It's me {{ $data->name }}</h2>
+<h2>New Message from Website</h2>
 
 <p><strong>User details:</strong></p>
 <p><strong>Name:</strong> {{ $data->name }}</p>

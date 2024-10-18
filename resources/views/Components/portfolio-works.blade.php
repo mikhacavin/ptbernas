@@ -1,7 +1,7 @@
    <!-- Alt Features / OUR WORKS Section -->
    <section id="alt-features" class="alt-features section">
        <!-- Section Title -->
-       <div class="container section-title-left text-black-50 mb-4">
+       <div class="container section-title d-flex justify-content-center text-black-50 mb-4">
            <h2 class="fw-bold d-flex align-items-center">{{ $worksPage->title_portfolio }}&nbsp;<a href="/portfolio"
                    class="btn btn-dark btn-circle d-flex align-items-center justify-content-center bold">
                    <i class="bi bi-arrow-up-right" style="-webkit-text-stroke: 1px;"></i>
@@ -29,7 +29,7 @@
                        <hr class="m-3" />
                    @endforeach
                </div>
-               <div class="text-center text-lg-start">
+               <div class="text-center">
                    <a href="/portfolio"
                        class="btn btn-dark btn-read-more d-inline-flex align-items-center justify-content-between px-3">
                        <span>Read More</span>

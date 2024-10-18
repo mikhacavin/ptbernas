@@ -5,7 +5,7 @@
      rgba(0, 0, 0, 0.76),
      rgba(0, 0, 0, 0.76)
    ),
-   url('assets/img/team-project.png');
+   url('{{ asset('storage/' . $image_url) }}');
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;

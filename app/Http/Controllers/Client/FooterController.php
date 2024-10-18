@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Client\Footer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class FooterController extends Controller
 {
@@ -61,7 +62,22 @@ class FooterController extends Controller
             'other_pages_title' => 'string',
             'socmed_title' => 'string',
             'socmed_desc' => 'string',
+            'image_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+        if ($request->hasFile('image_url')) {
+            if (Footer::findOrFail($id)->image_url) {
+                $imagePath = public_path('storage/' . Footer::findOrFail($id)->image_url);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+
+            $originalName = $request->file('image_url')->getClientOriginalName();
+            $imageName = Str::random(10) . '-' . $originalName;
+            $image_url = $request->file('image_url')->storeAs('images/footer', $imageName, 'public');
+            $validatedData['image_url'] = $image_url;
+        }
 
         Footer::where('id', $id)
             ->update($validatedData);

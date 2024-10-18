@@ -114,13 +114,13 @@
                                   if (data.success) {
                                       $('#contact-btn-submit').attr('disabled', false).text('Send Message');
                                       $('#contact-form-submit-custom')[0].reset();
-                                      alert('Message sent successfully');
+                                      alert(data.message);
                                   }
                               },
                               error: function(xhr, status, error) {
                                   var errors = xhr.responseJSON.errors;
                                   $('#contact-btn-submit').attr('disabled', false).text('Send Message');
-                                  alert('something went wrong!',errors);
+                                  alert(errors.message);
                               }
                           });
                       });

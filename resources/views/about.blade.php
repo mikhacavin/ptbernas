@@ -53,8 +53,8 @@
                                                 <div class="team-member">
                                                     <div class="member-img">
                                                         <img src="{{ asset('storage/' . $team->image_url) }}"
-                                                            class="img-fluid" alt=""
-                                                            style="height: 270px; object-fit: cover;">
+                                                            class="img-fluid w-100" alt=""
+                                                            style="object-fit: cover; object-position: top; height: 270px;">
                                                         <div class="social">
                                                             <a href=""><i class="bi bi-twitter-x"></i></a>
                                                             <a href=""><i class="bi bi-facebook"></i></a>

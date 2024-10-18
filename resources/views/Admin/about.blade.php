@@ -148,6 +148,30 @@
                 </div>
             </div>
         </div>
+        @push('script')
+            <script src="https://cdn.tiny.cloud/1/flaslgydxvivestoido2p1wiug67ocqud6p6spipwz26b2yk/tinymce/7/tinymce.min.js"
+                referrerpolicy="origin"></script>
+
+            <script>
+                $.widget.bridge('uibutton', $.ui.button);
+                $(document).ready(function() {
+                    $('.custom-file-input').on('change', function() {
+                        var fileName = $(this).val().split('\\').pop();
+                        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+                    });
+                    //Initialize Select2 Elements
+                    $('.select2').select2()
+
+                });
+
+                tinymce.init({
+                    selector: '.mcetextarea',
+                    images_upload_url: '{{ route('dashboard.tinymce') }}',
+                    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+                });
+            </script>
+        @endpush
     </section>
     @component('admin.datatables.teams')
     @endcomponent

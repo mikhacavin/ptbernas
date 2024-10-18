@@ -48,7 +48,12 @@
         </div>
     </div>
 
-    <div class="container copyright text-center mt-4">
+    <div class="container copyright text-center">
+        <div class="row d-flex jutify-content-center">
+            <div class="col-lg-7 mb-4 mx-auto">
+                <img src="{{ asset('storage/' . $footer->image_url) }}" alt="" width="100%" class="d-block">
+            </div>
+        </div>
         <p>
             © <span>Copyright 2024</span>
             <strong class="px-1 sitename">{{ $header->site_name }}</strong>

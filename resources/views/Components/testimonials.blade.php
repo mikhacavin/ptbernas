@@ -48,6 +48,9 @@
                                         @if ($testimonial->clients)
                                             <img src="{{ asset('storage/' . $testimonial->clients->image_url) }}"
                                                 class="testimonial-img" alt="" />
+                                        @else
+                                            <img src="https://www.svgrepo.com/show/327465/person-circle.svg"
+                                                class="testimonial-img" alt="" />
                                         @endif
                                         <h3>{{ $testimonial->name }}</h3>
                                         <h4>{{ $testimonial->position }}</h4>
